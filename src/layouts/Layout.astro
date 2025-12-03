@@ -1,0 +1,46 @@
+---
+// src/layouts/Layout.astro
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  
+  <title>{title}</title>
+  
+  <link rel="stylesheet" href="/main.css" media="screen">
+  <link rel="icon" type="image/x-icon" href="/resources/vkd.ico">
+  
+  <!-- Importing Custom Porsche fonts directly from porsche.com -->
+  <link rel="preconnect" href="https://cdn.ui.porsche.com" crossorigin>
+  <link rel="dns-prefetch" href="https://cdn.ui.porsche.com" crossorigin>
+</head>
+
+<body>
+  <Header />
+  
+  <main>
+    <slot />
+  </main>
+  
+  <Footer />
+  
+  <!-- Dark mode script -->
+  <script is:inline src="/darkmode.js"></script>
+  
+  <!-- JS Disable fail safe -->
+  <noscript>
+    <p>Hi, you are having your JavaScript turn off. This will affect some components of the website.</p>
+  </noscript>
+</body>
+</html>

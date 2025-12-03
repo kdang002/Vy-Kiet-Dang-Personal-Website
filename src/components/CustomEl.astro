@@ -1,0 +1,15 @@
+---
+// src/components/CustomEl.astro
+---
+
+<hello-world></hello-world>
+
+<script>
+  class HelloWorld extends HTMLElement {
+    constructor() {
+      super();
+      console.log("Hi USER!!!!!!\n☆*: .｡. o(≧▽≦)o .｡.:*☆");
+    }
+  }
+  customElements.define('hello-world', HelloWorld);
+</script>

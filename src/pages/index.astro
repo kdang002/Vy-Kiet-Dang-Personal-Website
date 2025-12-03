@@ -1,0 +1,42 @@
+---
+// src/pages/index.astro
+import Layout from '../layouts/Layout.astro';
+import CustomEl from '../components/CustomEl.astro';
+---
+
+<Layout title="CSE 134B - VyDang">
+  <h2>THIS SITE IS ENTIRELY SSG VIA ASTRO ⭐ for CSE134 HW4</h2>
+  <h2>Greetings, welcome to the landing page of my personal website.</h2>
+  <p>My name is <strong>Kiet</strong>, and I built this site to for one of my class project, and for fun.</p>
+
+  <section class="wrapper" id="this-is-kiet">
+    <div class="two-column-layout">                    
+      <span>
+        <h3>This is me</h3>
+        <p> 
+          I enjoy doing random stuffs at random times since my attention span is weird. <br>
+          But anyway, feel free to navigates around and click on random stuffs. <br>
+          I promised <strong>I WILL NOT <em>BLOW UP &nbsp; </em> YOUR COMPUTER 💩</strong> <br>
+          I'm still working on a couple more webpages like "Hobby" and "My Resume" :D , so stay tune.
+        </p>
+
+        <button popovertarget="my-popover" class="blow-up">Click this Popover</button>
+        <div id="my-popover" popover>
+          <p><strong>YOUR DEVICE HAS BEEN COMPROMISED AND WILL SELF DESTRUCT IN 5 SECONDS.</strong></p>
+        </div>
+      </span>
+
+      <figure>
+        <picture> 
+          <source 
+            srcset="/resources/Kiet_Pink_600.jpg 600w, /resources/Kiet_Lake_1024.jpg 1024w" 
+            media="(min-width: 1025px)">
+          <img width="600" alt="Pink Kiet" src="/resources/Kiet_Pink_600.jpg">
+        </picture>
+        <figcaption>Kiet at Jiu Zhai Gou</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <CustomEl />
+</Layout>

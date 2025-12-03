@@ -1,0 +1,108 @@
+---
+// src/pages/about-me.astro
+import Layout from '../layouts/Layout.astro';
+import CustomEl from '../components/CustomEl.astro';
+---
+
+<Layout title="CSE 134B - VyDang">
+<h2>THIS SITE IS ENTIRELY SSG VIA ASTRO ⭐ for CSE134 HW4</h2>
+<h2>About MEEEEEEEEEEEEE!!!!!!!!!!!!!!!!!!!!!!!!!</h2>
+
+<section class="about-me" id="about-me">
+    <div class="two-row-layout">
+            <picture> 
+                <source srcset="/resources/Kiet_JZG_600.jpg 600w , /resources/KietAndHisFriends_1024.jpg 1024w" , media="(min-width: 1025px)" >
+                <img    width="600" alt="Kiet at Jiu Zhai Gou " src="/resources/Kiet_JZG_600.jpg">
+            </picture>
+            <p> 
+                Kiet spent 3 years at Pasadena City College before transferring to <strong>UC San Diego</strong>, 
+                majoring in <strong>Computer Science</strong>. 
+                Kiet has always been amazed of <b>Robotics</b> technology, 
+                especially application in the field of transportations. 
+                Ever since moving to San Diego for college, 
+                Kiet has fall in love with this place, and is hunting for j*bs 
+                in order to stay with the warm sand and cold ocean. <br>
+                He's also obsessed with <em>Beige and Rounded corners.</em> <br>
+                Haven't mentioned, <strong>Kiet extremely loves cars and anything that could potentially injured him at highspeed</strong>.
+            </p>
+    </div>
+</section>
+
+<hr>
+
+<section class="wrapper" >
+    <div class="two-column-layout">
+        <ul>
+            <li>GOAL</li>
+            <li>Landing a j*b after college, preferably into automotive industry.</li>
+            <li>Get a Master Degree in the same field.</li>
+            <li>Supports my 2 younger sister's financially.</li>
+            <li>Become a College Instructor at one point and have my own startup.</li>
+        </ul>
+
+        <ul>
+            <li>FRUSTRATION</li>
+            <li>J*b market.</li>
+            <li>Home is a hemisphere away.</li>
+            <li>College professor is a professional yapper.</li>
+            <li>Overcooked Steak but Undercook Chicken.</li>
+            <li>UC San Diego parking situations.</li>
+            <li>Too broke for expensive hobbies.</li>
+        </ul>
+    </div>
+</section> 
+
+<hr>
+
+<section class="wrapper">
+    <div class="two-column-layout">
+    <span>
+        <article>
+                <h3>My All-Time Favorite Movie Article</h3>
+                <a href="https://youtu.be/uYPbbksJxIg">
+                    <h4>Oppenheimer - Directed by Christopher Nolan (YouTube Trailer)</h4>
+                </a>
+                <picture>
+                    <source srcset="/resources/oppenheimer_600.jpg 600w">
+                    <img    width="600" alt="Oppenheimer Poster" src="/resources/oppenheimer_600.jpg">
+                </picture>
+        </article>	
+    </span>
+
+    <span>
+        <review-box>
+            <form action="https://httpbin.org/post" method="post">
+                <fieldset>
+                    <legend>Movie Feedback</legend>
+
+                    <p>
+                    <span>Have you seen the movie?</span><br>
+                    <label><input type="radio" name="seen" value="yes" id="seen-yes">Yes</label>
+                    <label><input type="radio" name="seen" value="no" id="seen-yes">No</label>                           
+                    </p>
+
+                    <p>
+                    <label for="opinion">If so, what do you think of it?</label><br>
+                    <textarea id="opinion" name="opinion" rows="5" cols="40" placeholder="Share your thoughts..."></textarea>
+                    </p>
+
+                    <!-- Disable due to having no backend DB -->
+                    <p>
+                    <button type="submit" value="Submit">Submit</button>
+                    </p>
+                </fieldset>
+            </form>
+        </review-box>
+
+    </span>
+    
+    </div>
+</section>
+
+
+<button type="button" class="blow-up"
+onclick="alert('MACHINE WILL SELF DESTRUCT IN 5 SECONDS.');">Try me UwU</button>
+<hr>
+
+<CustomEl />
+</Layout>
