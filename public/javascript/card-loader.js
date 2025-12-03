@@ -58,7 +58,7 @@ window.addEventListener('DOMContentLoaded', async () => {
             masonryInstance = new Masonry(container, {
                 itemSelector: 'project-card',
                 percentPosition: true,
-                gutter: 24,
+                gutter: 40,
                 horizontalOrder: true
             });
             

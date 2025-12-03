@@ -742,13 +742,8 @@ form {
 
 .projects-grid project-card {
     width: calc(33.333% - 1.5rem);
-    margin: 0 !important; /* Force no margin */
-    padding: 0 !important; /* Force no padding */
-}
-
-.projects-grid project-card {
+    margin-bottom: 30px;   /* adds vertical spacing */
     width: calc(33.333% - 1.5rem);
-    /* REMOVE margin-bottom - masonry handles spacing */
 }
 
 
