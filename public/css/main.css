@@ -4,6 +4,7 @@
     GLOBAL STYLES
 ====================================================== */
 :root {
+    --transition-theme: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
     --bg-color: beige;
     --text-color: black;
     --nav-bg: rgb(199, 199, 60);
@@ -19,7 +20,7 @@
     navigation: auto;
 }
 
-/* Dark mode overrides */
+/* Dark mode configurations */
 .dark {
     --bg-color: #2d2929;
     --text-color: #ffffff;
@@ -28,6 +29,12 @@
     --menu-hover: #333;
     --menu-active: #555;
 }
+
+/* Add smooth transitions to elements using CSS variables */
+body, nav, .menu, main, section {
+    transition: var(--transition-theme);
+}
+
 #theme-toggle {
     display: none; /* Hide the original button */
 }
@@ -59,7 +66,7 @@
     bottom: 0;
     background-color: #ccc;
     border-radius: 30px;
-    transition: background-color 0.3s ease;
+    transition: var(--transition-theme);
     box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
@@ -73,7 +80,7 @@
     bottom: 3px;
     background-color: white;
     border-radius: 50%;
-    transition: transform 0.3s ease, background-color 0.3s ease;
+    transition: var(--transition-theme);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -88,7 +95,7 @@
 
 .theme-switch input:checked + .slider::before {
     content: "🌙";
-    transform: translateX(30px);
+    transform: translateX(30px) rotate(360deg);
 }
 
 /* Hover effect */
@@ -111,11 +118,11 @@
     display: none; /* Hidden by default, show on larger screens */
 }
 
-
 * {
     background-color: var(--bg-color);
     color: var(--text-color);
     font-family: 'Porsche Next', Arial, sans-serif;
+    transition: var(--transition-theme);
 }
 
 *, *::before, *::after {
@@ -128,6 +135,16 @@ html, body {
     padding: 0;
     overflow-x: hidden;
     animation: slideDown 0.7s ease-in-out;
+    display: flex;
+    flex-direction: column;
+}
+
+h1 {
+    font-size: 5.5rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+    line-height: 1.2;
 }
 
 body {
@@ -171,6 +188,8 @@ p > b, strong, em {
     padding: 0.75rem 1rem;
     box-sizing: border-box;
     gap: 1rem;
+    border-bottom: solid #92a156;
+    transition: var(--transition-theme);
 }
 
 /* ===========================
@@ -281,11 +300,11 @@ p > b, strong, em {
 .dropdown {
     position: relative;
     display: inline-block;
+    transition: var(--transition-theme);
 }
 
 .dropbtn {
-    background-color: color-mix(in srgb, rgb(199, 199, 60) 70%, white);
-    background-color: rgb(199, 199, 60); /* Fallback */
+    background-color: rgb(199, 199, 60);
     color: white;
     padding: 16px 24px;
     font-size: 16px;
@@ -293,6 +312,7 @@ p > b, strong, em {
     cursor: pointer;
     min-width: 44px;
     min-height: 44px;
+    transition: all 0.75s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .dropdown-content {
@@ -354,17 +374,8 @@ p > b, strong, em {
     transform: translateX(-50%);
     text-decoration: none;
     cursor: pointer;
+    font-size: 2.5rem; 
 }
-
-/* Desktop Logo */
-.logo {
-    color: white;
-    font-weight: bold;
-    -webkit-text-stroke: 1px black;
-    margin: 0;
-    font-size: 1.5rem;
-}
-
 
 /* ===========================
     WRAPPER & LAYOUTS
@@ -379,14 +390,20 @@ p > b, strong, em {
 
 main {
     padding: 1rem;
-    margin-top: 40px;
+    margin-top: 20px;
+    flex: 1;
 
     & h2 {
         text-align: center;
     }
 
-    & > p {
+    & p {
         text-align: center;
+        font-size: 1.4rem;
+    }
+
+    & a {
+        font-size: 1.5rem;
     }
 }
 
@@ -398,6 +415,7 @@ fieldset > legend {
 
 
 .two-column-layout {
+    margin: auto;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     border: solid;
@@ -409,6 +427,17 @@ fieldset > legend {
     row-gap: 1rem;
     overflow: hidden;  /* Clips anything trying to escape */
     transition: transform 500ms ease;  /* Transition on element */
+    align-items: center;  /* Vertically center grid items */
+    transition: var(--transition-theme);
+
+    & span {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+
+    }
 
     & ol > li:first-child , 
       ul > li:first-child {
@@ -496,10 +525,6 @@ fieldset > legend {
 
 }
 
-#this-is-kiet {
-    align-content: center;
-}
-
 /* Buttons */
 .blow-up {
     padding: 15px 25px;
@@ -560,7 +585,7 @@ form {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    background: #fff;
+    background: var(--bg-color);
     padding: 0.5rem;
     border-radius: 6px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -571,25 +596,32 @@ form {
         display: block;
         font-weight: 300;
         margin-bottom: 0.25rem;
+        color: var(--text-color);
     }
 
 
     textarea {
-        border-color: #ccc;
+        border-color: var(--text-color);
+        background-color: var(--bg-color);
+        color: var(--text-color);
     }
 
 
     fieldset {
-        border: 1px solid #ddd;
+        border: 1px solid var(--text-color);
         border-radius: 3px;
         padding: 1rem;
+        background-color: var(--bg-color);
     }
 
 
     input, textarea, select, button {
-        border: 1px solid #ccc;
+        border: 1px solid var(--text-color);
         border-radius: 3px;
         font-size: 1rem;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        padding: 0.5rem;
     }
 
     /* Highlight input INVALIDATION */
@@ -607,15 +639,15 @@ form {
     }
 
     button {
-        background-color: #2563eb;
-        color: #fff;
+        background-color: var(--nav-bg);
+        color: white;
         padding: 0.6rem 1.2rem;
         border: none;
         border-radius: 4px;
         cursor: pointer;
         font-size: 1rem;
         font-weight: 500;
-        transition: background-color 0.2s ease;
+        transition: opacity 0.3s ease, transform 0.2s ease;
     }
 
     button:hover,
@@ -700,20 +732,418 @@ form {
 
 }
 
+/* Project Cards Grid Container Masonry Layout*/
+.projects-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    position: relative;
+}
+
+.projects-grid project-card {
+    width: calc(33.333% - 1.5rem);
+    margin: 0 !important; /* Force no margin */
+    padding: 0 !important; /* Force no padding */
+}
+
+.projects-grid project-card {
+    width: calc(33.333% - 1.5rem);
+    /* REMOVE margin-bottom - masonry handles spacing */
+}
+
+
+/* Data Control Buttons */
+.data-controls {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    padding: 2rem 1rem;
+    margin: 0 auto;
+    max-width: 600px;
+}
+
+.data-btn {
+    flex: 1;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: 2px solid var(--nav-bg);
+    background: var(--nav-bg);
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.data-btn:hover {
+    background: transparent;
+    color: var(--nav-bg);
+    transform: translateY(-2px);
+}
+
+.data-btn:active {
+    transform: translateY(0);
+}
+
+/* ===========================
+    Crud preview localStorage
+=========================== */
+.crud-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: auto;
+    background-color: var(--bg-color);
+    box-sizing: border-box;
+}
+
+/* CRUD Form Styles */
+.crud-form {
+    border: 2px solid var(--text-color);
+    border-radius: var(--main-border-radius, 15px);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+    background-color: var(--bg-color);
+    padding: 1.5rem;
+    box-sizing: border-box;
+}
+
+.crud-form h3 {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    padding: 1rem;
+    margin: 0;
+    text-align: center;
+    border-radius: 4px;
+    font-size: 1.3rem;
+}
+
+.crud-form label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.crud-form input,
+.crud-form textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid var(--text-color);
+    border-radius: 4px;
+    font-size: 1rem;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: inherit;
+    box-sizing: border-box;
+}
+
+.crud-form input::placeholder,
+.crud-form textarea::placeholder {
+    color: var(--text-color);
+    opacity: 0.5;
+}
+
+.crud-form input:focus,
+.crud-form textarea:focus {
+    outline: 3px solid var(--nav-bg);
+    outline-offset: 2px;
+}
+
+.crud-form textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* Form Actions - Centered Buttons */
+.form-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.form-actions button {
+    width: 100%;
+    max-width: 300px;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.3s ease, transform 0.2s ease;
+}
+
+.btn-primary {
+    background-color: var(--nav-bg);
+    color: white;
+}
+
+.btn-secondary {
+    background-color: #666;
+    color: white;
+}
+
+.form-actions button:hover {
+    opacity: 0.8;
+    transform: translateY(-2px);
+}
+
+.form-actions button:active {
+    transform: translateY(0);
+}
+
+/* Manage Form Container */
+.manage-form {
+    max-width: 600px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* Car List Styles */
+.manage-list-container {
+    max-width: 900px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 1rem;
+    box-sizing: border-box;
+}
+
+.list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.list-header h3 {
+    margin: 0;
+    color: var(--text-color);
+}
+
+.refresh-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border-radius: 6px;
+    border: 1px solid var(--nav-bg);
+    background-color: var(--nav-bg);
+    color: white;
+    transition: opacity 0.3s ease;
+}
+
+.refresh-btn:hover {
+    opacity: 0.8;
+}
+
+.cars-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.car-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: var(--bg-color);
+    border-radius: var(--main-border-radius, 15px);
+    border: 2px solid var(--text-color);
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.car-item img {
+    width: 25em;
+    height: 15em;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.car-info {
+    flex: 1;
+    min-width: 0; /* Allows text truncation */
+}
+
+.car-info h4 {
+    color: var(--text-color);
+    word-wrap: break-word;
+}
+
+.car-info p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--text-color);
+    opacity: 0.8;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    word-wrap: break-word;
+    text-align: left;
+}
+
+.car-actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-direction: column;
+}
+
+.car-actions button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    min-width: 80px;
+    transition: transform 0.2s ease, opacity 0.3s ease;
+    white-space: nowrap;
+}
+
+.car-actions button:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+.btn-edit {
+    background-color: #3b82f6;
+    color: white;
+}
+
+.btn-delete {
+    background-color: #ef4444;
+    color: white;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 3rem;
+    color: var(--text-color);
+    opacity: 0.6;
+}
+
+/* Mobile Responsive */
+@media (max-width: 600px) {
+    .crud-container {
+        padding: 1rem;
+        margin: 1rem;
+        max-width: 100%;
+    }
+
+    .crud-form {
+        padding: 1rem;
+        gap: 1rem;
+    }
+
+    .crud-form h3 {
+        font-size: 1.1rem;
+        padding: 0.75rem;
+    }
+
+    .crud-form input,
+    .crud-form textarea {
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+
+    .form-actions {
+        margin-top: 0.5rem;
+    }
+
+    .form-actions button {
+        max-width: 100%;
+        font-size: 0.95rem;
+    }
+
+    .manage-list-container {
+        padding: 0 0.5rem;
+    }
+
+    .car-item {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+        padding: 0.75rem;
+        text-align: center;
+    }
+
+    .car-item img {
+        width: 100%;
+        max-width: 200px;
+        height: 140px;
+        margin: 0 auto;
+    }
+
+    .car-info h4 {
+        font-size: 1rem;
+    }
+
+    .car-info p {
+        font-size: 0.85rem;
+    }
+
+    .car-actions {
+        flex-direction: row;
+        justify-content: center;
+        gap: 0.75rem;
+    }
+
+    .car-actions button {
+        flex: 1;
+        min-width: 0;
+        font-size: 0.85rem;
+        padding: 0.6rem 0.75rem;
+    }
+
+    .list-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.75rem;
+    }
+
+    .list-header h3 {
+        font-size: 1.2rem;
+    }
+
+    .refresh-btn {
+        width: 100%;
+        max-width: 200px;
+    }
+}
+
+/* Extra small devices */
+@media (max-width: 400px) {
+    .crud-container {
+        padding: 0.5rem;
+        margin: 0.5rem;
+    }
+
+    .crud-form {
+        padding: 0.75rem;
+    }
+
+    .car-item {
+        padding: 0.5rem;
+    }
+
+    .car-actions button {
+        font-size: 0.8rem;
+        padding: 0.5rem;
+    }
+}
 
 /* ===========================
     MODERN CSS :has() and <pop-over>
 =========================== */
-
-/* Select the <form> that specifically 
-    :has input:invalid and textarea:invalid, 
-    and style that <form> */
-form:has(input:invalid, textarea:invalid) {
-    border: 2px solid red;
-    background-color: color(srgb 100% 95.7% 95.7%);
-    background-color: #fff4f4;
-}
-
 /* Select the .dropdown that specifically 
     :has .dropdown-content:hover and .dropbtn.
     Function: highlight them whenever hovered over the dropdown content */
@@ -736,10 +1166,93 @@ body:has(#my-popover:popover-open) {
     overflow: hidden;
 }
 
-footer {
+/* Contact Links - Styled Square Boxes */
+.contact-links {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0;
+}
+
+.contact-links li {
+    list-style: none;
+}
+
+.contact-links svg{
+    fill: var(--text-color);
+}
+
+.contact-links a {
+    display: block;
+    align-items: center;
+    justify-content: space-between; /* Changed from center */
+    width: 8.5rem;
+    height: 8rem;
+    color: var(--text-color); /* Use site text color */
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
     text-align: center;
-    padding: 2rem 1rem;
-    margin-top: 3rem;
+    padding: 1rem;
+    box-sizing: border-box;
+    border: solid var(--text-color);
+    border-radius: 3px;
+    transition: var(--transition-theme);
+}
+
+.contact-links a p {
+    display: block;
+    text-align: center;
+    margin: 0;
+    font-size: 1.25rem;
+
+}
+
+.contact-links a:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.contact-links svg {
+    width: 48px;
+    height: 48px;
+    transition: transform 0.3s ease;
+}
+
+.contact-links a:hover svg {
+    transform: scale(1.1);
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 1rem 1rem;
+    border: 2px solid var(--text-color);
+    border-bottom: none;
+    position: relative;
+    z-index: 1;
+    gap: 0.5rem;
+    background-color: var(--bg-color);
+    margin-top: auto;
+
+    & a {
+        color: var(--text-color);
+        font-weight: 600;
+        transition: var(--transition-theme);
+    }
+
+    & a:hover {
+        text-decoration: underline;
+        color: #2563eb;
+    }   z-index: 1;
+
 }
 
 /* ======================================================
@@ -761,15 +1274,6 @@ footer {
         padding: 0.5rem 1rem;
     }
 
-    .logo {
-        position: static; /* Remove absolute positioning */
-        transform: none; /* Remove transform */
-        order: 2;
-        font-size: 1.5rem;
-        text-align: center;
-        flex: 1;
-        padding: 0 0.5rem;
-    }
     .logo-link {
         position: static;
         transform: none;
@@ -778,10 +1282,11 @@ footer {
         text-align: center;
         padding: 0;
         margin: 0 0.5rem;
+        font-size: 2.5rem; 
     }
 
 
-      /* Theme Toggle Button */
+    /* Theme Toggle Button */
     #theme-toggle {
         order: 3;
         padding: 0.4rem 0.6rem;
@@ -824,7 +1329,11 @@ footer {
     }
 
     main {
-        margin-top: 60px;
+        margin-top: 20px;
+
+        & p {
+            font-size: 1.2rem;
+        }
     }
 
     main h2 {
@@ -840,6 +1349,50 @@ footer {
         max-width: 100%;
         width: 100%;  /* Full width on mobile */
     }
+
+    /* Project Cards Grid Container */
+    .projects-grid {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+        padding: 1rem;
+    }
+    
+    .projects-grid project-card {
+        width: 100%;
+        max-width: 350px;
+    }
+
+    .data-controls {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    h1 {
+        font-size: 4rem;
+        text-align: center;
+    }
+
+    .car-item {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .car-item img {
+        margin: 0 auto;
+    }
+
+    .car-actions {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .list-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
 }
 
 /* ======================================================
@@ -866,10 +1419,6 @@ footer {
         gap: 1.5rem;
     }
 
-    .logo {
-        font-size: 1.8rem;
-    }
-
     main h2 {
         font-size: 2rem;
     }
@@ -892,6 +1441,10 @@ footer {
     .two-row-layout img {
         max-width: 80%;  /* Slightly constrained */
     }
+    
+    .projects-grid project-card {
+        width: calc(50% - 1.5rem);
+    }
 
 }
 
@@ -910,19 +1463,15 @@ footer {
         gap: 3rem;
     }
 
-    .logo {
-        font-size: 2rem;
-    }
-
     main {
-        margin-top: 100px;
+        margin-top: 20px;
 
         & h2 {
             font-size: 2.5rem;
         }
 
         & > p {
-            font-size: 1.2rem;
+            font-size: 1.7rem;
         }
     }
 

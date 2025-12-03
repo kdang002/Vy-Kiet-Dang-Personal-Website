@@ -1,0 +1,77 @@
+---
+// src/pages/index.astro
+import Layout from '../layouts/Layout.astro';
+import CustomEl from '../components/CustomEl.astro';
+---
+
+<Layout title="CSE 134B - VyDang">
+    <h2>⚙️ Garage Manager ⚙️</h2>
+
+    <!-- CRUD Form -->
+    <section class="crud-container">
+        <form id="crud-form" class="crud-form">
+            <h3 id="form-title">Add New Car</h3>
+            
+            <input type="hidden" id="car-index" value="">
+            
+            <label for="car-title">Car Title *</label>
+            <input 
+                type="text" 
+                id="car-title" 
+                name="title" 
+                maxlength="55"
+                required 
+                placeholder="e.g., Mazda RX7">
+            
+            <label for="car-img">Image URL *</label>
+            <input 
+                type="url" 
+                id="car-img" 
+                name="img" 
+                required 
+                placeholder="https://example.com/car.jpg or resources/cars/car.jpg">
+            
+            <label for="car-description">Description</label>
+            <textarea 
+                id="car-description" 
+                name="car-description" 
+                rows="4"
+                maxlength="100"
+                placeholder="Tell us about this car up to 100 characters"></textarea>
+                <output class="info" id="comment-info">100 characters remaining</output>
+
+            <label for="car-link">Learn More Link</label>
+            <input 
+                type="url" 
+                id="car-link" 
+                name="link" 
+                placeholder="https://en.wikipedia.org/wiki/...">
+            
+            <div class="form-actions">
+                <button type="submit" id="submit-btn" class="btn btn-primary">Add Car</button>
+                <button type="button" id="cancel-btn" class="btn btn-secondary" style="display:none;">Cancel</button>
+            </div>
+        </form>
+    </section>
+
+    <!-- Current Cars List -->
+    <section class="cars-list-container">
+        <div class="list-header">
+            <h3>Current Cars in Storage</h3>
+            <button id="refresh-list" class="btn btn-small">🔄 Refresh</button>
+        </div>
+        
+        <div id="cars-list" class="cars-list">
+            <!-- Cars will be listed here -->
+        </div>
+    </section>
+
+    <!-- Back to Gallery Link -->
+    <a href="cars.html" >⬅ Back to Gallery</a>
+
+
+
+<script is:inline src="/crud-manager.js"></script>
+
+  <CustomEl />
+</Layout>

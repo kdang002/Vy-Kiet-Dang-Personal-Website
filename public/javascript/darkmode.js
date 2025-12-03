@@ -1,7 +1,7 @@
+// ----------------------------------------------------
+// DARK MODE
+// ----------------------------------------------------
 window.addEventListener('DOMContentLoaded', () => {
-    // ----------------------------------------------------
-    // DARK MODE
-    // ----------------------------------------------------
     const themeToggle = document.getElementById('theme-toggle');
     // Check for saved theme preference or default to light mode
     const currentTheme = localStorage.getItem('theme') || 'light';

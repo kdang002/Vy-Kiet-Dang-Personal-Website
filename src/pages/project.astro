@@ -1,0 +1,40 @@
+---
+// src/pages/index.astro
+import Layout from '../layouts/Layout.astro';
+import CustomEl from '../components/CustomEl.astro';
+---
+
+<Layout title="Projects">
+
+    <h1>PROJECTS</h1>
+
+    <section class="wrapper" >
+        <div class="two-column-layout">
+            <img src="public/resources/images/let-me-cook.png" width="300" alt="Let Me Cook">
+            <span>
+                <a href="https://cse110-sp25-group8.github.io/final-project/">
+                    <h2>Link to Let Me Cook</h2>                    
+                </a>
+
+                <p>This project, I worked as a group of 11 to build a food recipe-card web app. 
+                    Allows the user to add their own recipe-card to keep it store it there.
+                </p>
+            </span>
+        </div>
+    </section> 
+
+    <section class="wrapper" >
+        <div class="two-column-layout">
+                <img src="public/resources/images/beer-rec.jpg" height="500" alt="Beer Recommendation System">
+
+            <span>
+                <a href="https://github.com/Jonny-Le/BeerRecommendationSystem">
+                    <h2>Link to Beer Recommendation System</h2>
+                </a>
+                <p>I worked as a group of 3 to build a ML model that predicts the top 10 beers, tailored to each user taste.</p>
+            </span>
+
+        </div>
+    </section> 
+<CustomEl />
+</Layout>
