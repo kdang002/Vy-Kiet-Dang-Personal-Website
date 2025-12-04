@@ -26,7 +26,7 @@ window.addEventListener('DOMContentLoaded', async () => {
         {
             title: "Toyota Supra Mk5",
             img: "https://static1.topspeedimages.com/wordpress/wp-content/uploads/2023/06/supra.jpg",
-            description: "Technically a re-skinned BMW, uses the same engine, chasis, interiors, infortainment, etc. from a BMW Z4. Expensive and under-delivered.Generated via prepopulated localStorage.",
+            description: "Technically a re-skinned BMW, uses the same engine, chasis, interiors, infortainment, etc. from a BMW Z4. Expensive and under-delivered. Generated via prepopulated localStorage.",
             link: "https://www.toyota.com/grsupra/?msockid=3167109b7e8f66353c6202e47fe567cf"
         },
         {

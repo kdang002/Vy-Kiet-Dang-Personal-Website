@@ -77,7 +77,8 @@ import CustomEl from '../components/CustomEl.astro';
         // This function updates the character counter and warns near the limit
         // @param {Event} e - Input event from the comments textarea
         // @return {void}
-        function handleCommentInput(e) {
+        function handleCommentInput(e: Event) {
+            e.preventDefault();
             const comments = e.target;
             const commentInfo = document.getElementById('comment-info');
             const maxLength = comments.getAttribute('maxlength');
