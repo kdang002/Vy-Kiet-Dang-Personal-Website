@@ -22,8 +22,15 @@ const { title } = Astro.props;
   <link rel="icon" type="image/x-icon" href="/resources/vkd.ico">
   
   <!-- Importing Custom Porsche fonts directly from porsche.com -->
-  <link rel="preconnect" href="https://cdn.ui.porsche.com" crossorigin>
-  <link rel="dns-prefetch" href="https://cdn.ui.porsche.com" crossorigin>
+  <link 
+      rel="preload" 
+      as="style" 
+      href="https://cdn.ui.porsche.com/porsche-design-system/styles/font-face.7076ba0.css"
+      onload="this.onload=null;this.rel='stylesheet'">
+  
+  <noscript>
+      <link rel="stylesheet" href="https://cdn.ui.porsche.com/porsche-design-system/styles/font-face.7076ba0.css">
+  </noscript>                
 
   <!-- Importing Masonry Layout for cards -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js"></script>
