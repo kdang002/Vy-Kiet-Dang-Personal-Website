@@ -1,0 +1,797 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CustomEl from '../components/CustomEl.astro';
+---
+
+<Layout title="Rottsky Stone">
+
+<div class="report-page">
+
+    <h1>Rottsky Stone</h1>
+
+    <section class="about-me" id="rottsky-stone">
+        <div class="two-row-layout">
+            <img src="/resources/images/rottsky-stone.jpg" width="600" alt="Rottsky Stone Mini Pupper translator robot" />
+            <p>
+                Rottsky Stone is a translator robot assistance meant to be deployed in settings
+                like hospital waiting rooms to bridge communication gaps caused by language
+                barriers. The robot runs on a Mini Pupper 2 and is accompanied by a web
+                application for interaction.
+            </p>
+            <p>Ashley Vo, <strong>Role</strong>: web application developer and conversation designer (Section 3.1.3)</p>
+            <p>Vy Dang, <strong>Role</strong>: interaction developer and experiment lead (Sections 3.1.1, 3.1.2)</p>
+        </div>
+    </section>
+
+    <hr>
+
+    <section class="wrapper">
+        <div class="two-row-layout">
+            <article>
+                <h2>1 Executive Summary</h2>
+                <p>
+                    The United States is a vast country with many cultures, but English remains the primary language
+                    spoken. As such, people are likely to face language barriers in places such as
+                    hospitals, restaurants, and more. Rottsky Stone, dubbed "Rottsky" for short, is
+                    a robot that aims to act as a translator bot for hospital waiting rooms,
+                    specifically.
+                </p>
+                <p>
+                    This is motivated by existing robots that aid with translation, but we must be mindful of those who
+                    don't want help from robots and how the robot interacts with its speech. We
+                    hope to assess a robot's ability to help bridge communication gaps and aid
+                    human staff. Through this, we recruited four participants to observe whether or
+                    not they are successful in determining the robot's purpose as well as measuring
+                    their feelings of trust in the robot.
+                </p>
+                <p>
+                    While we largely received positive signal about its function and interpretability, there are
+                    some concerns in regards to interacting with it and its role should it be
+                    expanded upon in the future.
+                </p>
+            </article>
+        </div>
+    </section>
+
+    <hr>
+
+    <section class="wrapper">
+        <div class="two-row-layout">
+            <article>
+                <h2>2 Introduction</h2>
+                <p>
+                    Rottsky Stone, shortened to "Rottsky" for brevity, is a translator robot developed for the
+                    Mini Pupper 2. For our prototype, we identified an ideal deployment in hospital
+                    waiting room settings such that patients can interact and share information to
+                    be passed on to hospital staff, whether that be administrative staff or nurses
+                    and doctors. The robot could act as a team member and mediator in the hospital,
+                    collaborating with the staff and patients [1]. What motivated this project was our
+                    own experiences with communication troubles due to language barriers in
+                    environments that are primarily dominated in one language, such as English in
+                    the United States.
+                </p>
+                <p>
+                    There are current robots aiding with translation between humans that inspired the project. One
+                    such exploration by Ling examined how robots could be used to facilitate
+                    interaction, including a translator for participants in the United States and
+                    Japan [2]. Looking at this through the lens of our goals, there are many
+                    multicultural places in which people may struggle or find difficulty in getting
+                    services due to barriers in communication. While some may have friends or
+                    family to aid in translation, we wanted to look at an option that would allow
+                    an individual a sense of autonomy to aid their personal needs. Additionally, it
+                    is possible some may hire a translator, coming at a monetary expense and
+                    possibly adding to an already stressful environment in a medical facility.
+                </p>
+                <p>
+                    However, there are concerns and limitations to address. People may "not want robots in their lives
+                    whatsoever" [2]. A large consideration for our design is to make interaction
+                    optional between a user and robot. While the aim of the robot is to help,
+                    creating the impression of intrusion diminishes the purpose of our design.
+                    Languages are also complex in nature, requiring robots to factor in nuances
+                    like indirectness and culture with natural language processing technology [3].
+                    That creates another layer of communication. Combined with the fact that people
+                    tend to alter their speaking rate, grammar, and speaking style to automatic
+                    translation services [4], Tuttösí found that an adaptive voice was preferable
+                    for the robot [5].
+                </p>
+                <p>
+                    Our investigation of prior work helped us narrow what we wanted out of a prototype. Although
+                    navigating the user intention, robot's interpretation, and the staff's
+                    interpretation is not within the scope of our project, it is worth noting this
+                    given the possible extensions should it be deployed in a real environment.
+                    Thus, our primary goal is facilitating an easy interaction with the robot,
+                    allowing the user to call it when needed and accommodating their spoken
+                    language. We ask three questions to motivate our project:
+                </p>
+                <ul>
+                    <li>How easily can patients identify a robot's purpose solely through observation?</li>
+                    <li>How can a robot help hospital staff prioritize patient tasks when the robot is able to be a communication bridge between the staff and patients?</li>
+                    <li>How can a robot bridge communication gaps between those affected by language barriers and services?</li>
+                </ul>
+            </article>
+        </div>
+    </section>
+
+    <hr>
+
+    <section class="wrapper">
+        <div class="two-row-layout">
+            <article>
+                <h2>3 Methodology</h2>
+                <h3>3.1 Technical Approach</h3>
+                <p>
+                    In terms of technology, two primary aspects are the center of Rottsky's design. The first
+                    is communication with the robot, and the second is movement and facial expressions
+                    to address the anthropomorphic aspects of our design.
+                </p>
+            </article>
+
+            <figure>
+                <img src="/resources/images/rottsky-stone/figure-01.png" alt="Diagram of how users and Rottsky react to various stimuli" />
+                <figcaption><em>Figure 1: A simple diagram of how users and Rottsky react to various stimuli</em></figcaption>
+            </figure>
+
+            <figure>
+                <img src="/resources/images/rottsky-stone/figure-02.png" alt="The main components of Rottsky and how they work together at a high level" />
+                <figcaption><em>Figure 2: The main components of Rottsky and how they work together at a high level</em></figcaption>
+            </figure>
+
+            <p>
+                For communication, there are three main components that work with each other, each supporting the
+                interaction with Rottsky: the user, web application, and Rottsky itself.
+                Processed by a speech-to-text module, the user will express their language of
+                choice through the companion web app, where the information is then passed on
+                to the translation modules running on Rottsky. Once Rottsky understands the
+                language the user speaks, the conversation between Rottsky and the user can
+                commence.
+            </p>
+
+            <figure>
+                <img src="/resources/images/rottsky-stone/figure-03.png" alt="State machine showing how the interaction between the three main communication components interact with each other" />
+                <figcaption><em>Figure 3: State machine showing how the interaction between the three main communication components interact with each other.</em></figcaption>
+            </figure>
+
+            <p>
+                Interaction with users is supported by movement and facial expressions. As we wish to only have the robot
+                interact with a user if they want to, the user is able to make a choice to call
+                the robot to their location. In our case, for simplicity, we chose to use a
+                neon green sheet of paper as a signal for the robot to move. To show the
+                robot's state, we have various faces that would convey when the robot is in a
+                neutral, moving, talking, or listening state.
+            </p>
+
+            <figure>
+                <img src="/resources/images/rottsky-stone/figure-04.png" alt="State machine showing how the robot's movement state is initiated" />
+                <figcaption><em>Figure 4: State machine showing how the robot's movement state is initiated.</em></figcaption>
+            </figure>
+
+            <h4>3.1.1 Speech and Text Modules (Lead: Vy Dang)</h4>
+            <p>
+                For a robust approach to the speech, text, and translation modules, we use Google Translate API
+                wrappers.
+            </p>
+
+            <figure>
+                <img src="/resources/images/rottsky-stone/figure-05.jpg" alt="The speech/text/translation pipeline" />
+                <figcaption><em>Figure 5: The speech/text/translation pipeline.</em></figcaption>
+            </figure>
+
+            <p>
+                However, the speech-to-text (STT) and text-to-speech (TTS) features are only available for widely popular
+                languages such as English, Mandarin, German, Spanish, etc., therefore, Rottsky
+                is only available within a certain set of selected languages for our prototype.
+                We then decided to transfer this pipeline into ROS2, and created two different
+                nodes by separating the translation and STT+TTS modules.
+            </p>
+
+            <figure>
+                <img src="/resources/images/rottsky-stone/figure-06.png" alt="The speech/text/translation nodes" />
+                <figcaption><em>Figure 6: The speech/text/translation nodes</em></figcaption>
+            </figure>
+
+            <p>
+                To give robot input, the user will speak into the microphone, where the audio will be delivered to
+                the STT+TTS node to convert that audio into text in the user's speaking
+                language. Then, it will be sent to the translation node to translate the
+                provided text into the target language, before sending the translated text back
+                to STT+TTS node for Rottsky to speak to the user as the conversation is
+                processed.
+            </p>
+
+            <h4>3.1.2 Movement and Emotion (Lead: Vy Dang)</h4>
+            <p>
+                Movement is a key part of Rottsky's design. We want patients to be able to call Rottsky to their location
+                to begin an interaction. Additionally, allowing Rottsky to show emotion to
+                reflect its state is key for aiding the flow of conversation between the user
+                and the robot. Below illustrates the flow of how input is processed for
+                movement.
+            </p>
+
+            <figure>
+                <img src="/resources/images/rottsky-stone/figure-07.png" alt="The movement pipeline and nodes" />
+                <figcaption><em>Figure 7: The movement pipeline and nodes</em></figcaption>
+            </figure>
+
+            <p>
+                First, the OAK-D camera is launched and will publish raw images. Next, a blob detection module will filter
+                raw footage out, leaving only brightly green-colored objects, and publish a
+                message "<code>neon_green</code>" if detected, which is used as a signal for Rottsky to move. The pup
+                walk node, a client that handles all the walking physics, receives the message
+                and will walk forward. It should be noted that if the robot does not see green,
+                then this will signal Rottsky to stop moving.
+            </p>
+            <p>
+                Moving onto emotions, Rottsky will always be in an idle state by default and display a smiling face,
+                doing nothing, and standing still, waiting for input.
+            </p>
+
+            <figure>
+                <img src="/resources/images/rottsky-stone/figure-08.png" alt="Rottsky's IDLE state is smiling" />
+                <figcaption>
+                    <em>
+                        Figure 8: Rottsky's IDLE state is smiling. Image: Character BMO from Adventure Time. Credits to Cherry
+                        Honey on Figma for the assets:
+                        <a href="https://www.figma.com/community/file/1379945530999597632">https://www.figma.com/community/file/1379945530999597632</a>
+                    </em>
+                </figcaption>
+            </figure>
+
+            <p>
+                When Rottsky detected a green object in front of it, it would start moving towards it with a happy
+                face. When the user speaks to it, it will display a listening face. When it's
+                speaking, it will reuse the same happy face. The table below illustrates the
+                faces Rottsky makes.
+            </p>
+
+            <div class="face-comparison">
+                <figure>
+                    <figcaption><strong>Rottsky moving forward or speaking</strong></figcaption>
+                    <img src="/resources/images/rottsky-stone/figure-09.png" alt="Rottsky moving forward or speaking face" />
+                </figure>
+                <figure>
+                    <figcaption><strong>Rottsky listening to user input</strong></figcaption>
+                    <img src="/resources/images/rottsky-stone/figure-10.png" alt="Rottsky listening to user input face" />
+                </figure>
+            </div>
+            <p class="table-caption"><em>Table 1: These are the different faces Rottsky will make during the interaction.</em></p>
+
+            <h4>3.1.3 Web Application (Lead: Ashley Vo)</h4>
+            <p>
+                There are two motivating reasons for the development of a partner web application for Rottsky. First, given our
+                target setting of a medical facility, there may be users who are hard of
+                hearing and may require text input to accommodate them. Second, the screen on
+                the Mini Pupper is small. By providing a live transcript of the conversation,
+                this allows the user to correct any information potentially misheard. However,
+                through our experimentation with dummy code, we found our project would go
+                smoother if we have the user submit the language they speak themselves due to
+                troubles we found with speech-to-text.
+            </p>
+            <p>
+                In order to run this, we knew we wanted to run a simple web server on the robot. We utilized FastAPI
+                to set up endpoints for communication with the nodes. There are two endpoints
+                that are of interest.
+            </p>
+            <p>
+                Our first endpoint is <code>/language</code> that the browser will <code>POST</code> to in order to share the language with the nodes running on ROS2.
+                Additionally, it is worth mentioning we have a hard-coded conversation as a
+                part of our prototype, meaning the robot is scripted to say the same exact
+                greeting and goodbye messages regardless of user input. So, this endpoint also
+                signals the start of a conversation.
+            </p>
+            <p>
+                The second endpoint of interest is <code>/stream</code> the browser will <code>GET</code> in order to get messages in real time. Whether from the robot or user,
+                the browser will receive the message and create an element to add to the web
+                page.
+            </p>
+
+            <figure>
+                <img src="/resources/images/rottsky-stone/figure-11.png" alt="Diagram of how endpoints are used and how information flows between client and the web server running on the robot" />
+                <figcaption><em>Figure 9: the diagram of how endpoints are used and how information flows between client and the web server running on the robot.</em></figcaption>
+            </figure>
+
+            <h3>3.2 Human-centric Work</h3>
+            <p>
+                When it comes to human-centered aspects of Rottsky, we are hoping to learn more in how patients can identify
+                the robot's purposes solely through observations and designs, how robots help
+                hospital staff prioritize patient's task when the robot is the communication
+                bridge between staff and patients, and how can a robot bridge communication
+                gaps between those affected by language barriers and services. These findings
+                will help improve Rottsky's human-robot interaction and anthropomorphic
+                features.
+            </p>
+
+            <h4>3.2.1 Methodology</h4>
+
+            <h5>3.2.1.1 Overview</h5>
+            <p>
+                Given our motivations for Rottsky, a key question drives our experimental process: in a real deployed
+                setting where someone may speak zero English, could someone walk in, observe an
+                interaction between a patient and a robot, and then know that the robot is used
+                for assistance?
+            </p>
+            <p>
+                In our experiment, we have two primary roles. First, there is a fake participant, who is ideally
+                multilingual. This person will interact with the robot without giving away
+                Rottsky's purpose. For those we bring into the experiment, they are the real
+                participants whose job is to observe what the fake participant does and tries
+                to guess Rottsky's role. The idea is to emulate a setting in which a new
+                patient comes into a waiting room, sees the robot, and comes to a decision
+                whether or not the robot could be a helpful resource. Additionally, we are
+                interested in asking our observers about their first impressions of
+                expectations and whether or not they would feel comfortable interacting with
+                Rottsky.
+            </p>
+
+            <h5>3.2.1.2 Participants</h5>
+            <p>
+                Participants are students recruited from University of California, San Diego, primarily peers from
+                CSE190/276B: Human-Robot Interaction (HRI) and friends. We have a total of four
+                participants. Three are from the CSE190/276B: HRI course, and one friend from
+                the same university. We did not collect any information about participants'
+                demographics, such as age, gender, ethnicity, etc., as it is unnecessary for
+                this study.
+            </p>
+
+            <h5>3.2.1.3 Protocol</h5>
+            <p>
+                To introduce the experiment to our participants, we first asked what languages they speak.
+                Specifically, we asked if they spoke English, Spanish, Chinese-Mandarin,
+                Japanese, or Hindi as those are the languages we supported on Rottsky. This may
+                affect the experiment due to the availability of languages the team speaks, so
+                we noted these details down. After the pre-experiment question, we introduced
+                the robot without giving away its purpose and the fact that the fake
+                participant will be demonstrating twice. The fake participant explained that
+                there will be no commentary and asked the real participant to simply observe the
+                demo. Before the demonstrations began, there was one last opportunity to ask
+                the participant if they had any questions about the process.
+            </p>
+            <p>
+                There were two demonstrations. While the process was the exact same, the language used in each
+                demonstration was different, and we wanted to give two opportunities for the
+                participant to observe the interaction in case there were details they did not
+                pick up the first time. To begin, the fake participant would signal the robot
+                to move towards the user with the green paper. Then, hiding the device from the
+                real participant, the fake participant would open the web application
+                associated with the robot and select a language to begin the interaction with
+                Rottsky. The conversation was kept to a medical context with phrases like "my
+                arm is broken", "I broke my leg", etc. Once the conversation was over, that
+                ended the demonstration. As mentioned above, this process would be repeated
+                again. After both have been completed, the fake participant would signal to the
+                real participant that the demonstration was finished.
+            </p>
+            <p>
+                Finally, our experiment ends with some questions, during which we take notes during. It
+                begins with an interview with the participant, asking them what they believe
+                Rottsky's purpose to be. This can be split into two parts with one being what
+                they expected the robot to do and the actual role of the robot. After their
+                comments have been noted, we introduce Rottsky and its purpose. If the
+                participant wishes to, they can interact with Rottsky themselves. Once
+                questions have been answered from both the team and the participant, we then
+                ask the participant to fill a post-experiment form.
+            </p>
+
+            <h5>3.2.1.4 Measures</h5>
+            <p>
+                During the experiment, we interviewed the participants two questions,"I would like you to
+                guess what the robot's functionality is by observing the interactions between
+                me and the robot" and "should the robot always send your questions/statements
+                to the staff or not?" The post experiment form consists of questions from the
+                General Attitudes Towards Robots Scale (GAToRS) [6], and all questions are
+                answered from on a Likert scale.
+            </p>
+            <p>
+                To assess personal level of positive attitude, we wanted to measure the sentiment regarding trust
+                in the robot's ability and interaction comfort. Looking at the negatives, we
+                looked at the contrary whether people believed there would be an error in the
+                interaction or whether being around the robot created some form of stress. On
+                the societal level, we looked at the broader impacts and potential consequences
+                that Rottsky may have. Below, the exact sentiments we assessed were used in our
+                survey.
+            </p>
+
+            <table>
+                <tbody>
+                    <tr>
+                        <th>Personal Level Positive Attitude (P+)</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <ul>
+                                <li>I can understand the robot's overview functionality just by observing its interaction with other people.</li>
+                                <li>I can trust the robot's functionality with translating and ensuring staff are notified that I need assistance.</li>
+                                <li>I would feel relaxed talking with a robot.</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Personal Level Negative Attitude (P-)</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <ul>
+                                <li>I fear that a robot would not understand my commands</li>
+                                <li>I would feel very nervous just being around a robot</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Societal Level Positive Attitude (S+)</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <ul>
+                                <li>Assigning routine tasks to robots lets people do more meaningful tasks</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Societal Level Negative Attitude (S-)</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <ul>
+                                <li>Widespread use of robots is going to take away jobs from people</li>
+                                <li>I am afraid that robots will encourage less interaction between humans</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="table-caption"><em>Table 2: A list of sentiments we assessed on GaToRS for Rottsky.</em></p>
+        </div>
+    </section>
+
+    <hr>
+
+    <section class="wrapper">
+        <div class="two-row-layout">
+            <article>
+                <h2>4 Results</h2>
+                <p>
+                    After conducting the study with four participants, we learned that three out of four participants
+                    trust Rottsky's functionality, such as robot movements, speech-to-text,
+                    translation, and text-to-speech features, to perform correctly. Most of them
+                    feel comfortable talking to Rottsky and being around it. Almost everyone agreed
+                    to "if a robot cannot do something on its own, it should notify a staff"
+                    without hesitation. Some even made a similar statement without guiding
+                    questions from us. Lastly, all agreed that it would be helpful to assign
+                    routine tasks to robots, so staff can do more meaningful tasks.
+                </p>
+            </article>
+
+            <figure>
+                <img src="/resources/images/rottsky-stone/figure-12.png" alt="Forms response chart for trust in the robot's functionality. Number of responses: 4 responses." />
+                <figcaption><em>Figure 10: The share of people who trusted Rottsky's functionality with the majority (75%) agreeing on trusting the robot.</em></figcaption>
+            </figure>
+
+            <p>
+                The interesting thing we found is most participants can guess the robot's functionality acting as a
+                peer for back and forth translated communication when seeing the demo in a
+                language not familiar to them, and those who share a common language with the
+                fake participant can immediately affirm the functionality. However, when it's
+                their turn to interact with Rottsky, we saw confusion in how to interact with
+                it on the first try, such as how to get the robot to move, how to initiate the
+                conversation in their selected language, etc. In the post-experiment survey
+                answers, three of four agree that they are afraid Rottsky would not understand
+                their commands, therefore, execute incorrect actions. There are
+                neutral-positive opinion participants who are concerned that robots will
+                encourage less interaction between humans. Lastly, there are mixed opinions on
+                whether robots' functionality may take away certain people's jobs. In today's
+                development of AI and constantly shifting in the job market, it is justifiable
+                that if this robot were to scale and improve, there will be people losing their
+                jobs.
+            </p>
+
+            <figure>
+                <img src="/resources/images/rottsky-stone/figure-13.png" alt="Forms response chart for assigning routine tasks to robots. Number of responses: 4 responses." />
+                <figcaption><em>Figure 11: The share of people who believe Rottsky can allow humans to do more meaningful tasks. Of all of our participants, all of them agree.</em></figcaption>
+            </figure>
+
+            <figure>
+                <img src="/resources/images/rottsky-stone/figure-14.png" alt="Forms response chart for whether robot functionality may take away jobs. Number of responses: 4 responses." />
+                <figcaption><em>Figure 12: The share of people who feel Rottsky may or may not take away certain jobs with an even split of those who agree and disagree.</em></figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <hr>
+
+    <section class="wrapper">
+        <div class="two-row-layout">
+            <article>
+                <h2>5 Discussion and Future Work</h2>
+                <p>
+                    Our development of Rottsky was made with addressing language barriers and accessing help in hospital waiting
+                    rooms. We wished to develop a prototype such that people would be comfortable
+                    in seeking aid from Rottsky. More importantly, it was crucial for us to assess
+                    whether or not people would be able to identify the robot's function and role.
+                    If it were to be integrated into society and work alongside us, we have to take
+                    in the context that we live in a multicultural society. As within the United
+                    States, English remains the dominant language, and our experiences want to help
+                    break down language barriers so that patients have a resource that can help
+                    them get the services they need.
+                </p>
+                <p>
+                    Overall, we found that Rottsky serves as a solid foundation for expansion. The idea in of itself seems to work
+                    well with our experiment participants. Although we have human-centric concerns
+                    to address, these are further problems that could be explored in the future. We
+                    look to increase the confidence people have in being able to interact with
+                    Rottsky and observe its function in a real environment.
+                </p>
+                <p>
+                    From our results, there are aspects of the robot that we will keep and improve on, such as the speech
+                    recognition features, facial and emotion designs, robot movements, etc. for the
+                    end goal of making patients feel comfortable around, speaking, and requesting
+                    the robots to do certain tasks. Also, a revision on human interactions with
+                    Rottsky is needed in order to address the confusion of initializing a
+                    conversation, how to ask Rottsky to move towards the participants, and how to
+                    use the web application. This is all meant to improve user experience and
+                    internationalize towards foreign linguistic backgrounds.
+                </p>
+                <p>
+                    There were limitations during our work with Rottsky. First, the time factor was narrow. We only had about two
+                    weeks for planning, developing speech, translation, web application, testing
+                    behaviours, and carrying out experiments with a team of two people. Second, a
+                    shift in robot architecture was beyond our initial expectation. At first, we
+                    planned to work with the TurtleBot 2, which is taller, has a bigger screen from
+                    the mounted laptop, and moves on four wheels instead of four legs on the Mini
+                    Pupper 2. However, TurtleBot was running on the ROS1 operating system. While
+                    we are comfortable with ROS2, we feared the overhead due to differences in
+                    debugging and troubleshooting. It does not suit the narrow time frame.
+                    Therefore, we decided to work with the Mini Pupper 2, which has hardware
+                    limitations on it. We kept that in mind and purposely designed Rottsky as a
+                    prototype to scale for future products. If the pipeline were to transfer
+                    successfully to TurtleBot (or any similar robots), the functionality of Rottsky
+                    would work well with the new body.
+                </p>
+                <p>
+                    Regarding the hardware limitations specifically, we also found difficulties during development. We were running a
+                    web server and color detection simultaneously on the robot, which caused it
+                    much stress. We often found that sometimes running Rottsky as a whole proved to
+                    be difficult due to the robot and system freezing up, likely due to the
+                    overwhelming amount of information to process. Rottsky, at the end of our
+                    prototype development, was running eight nodes in total. While we were able to
+                    complete demonstrations we attribute to luck, this is still a great
+                    inconvenience and limitation we had to work with.
+                </p>
+                <p>
+                    For future work, if hardware permitted, we would love to install a lightweight language model onto
+                    the robot to enable dynamic back-and-forth conversation, fine-tune & system
+                    prompt the model to match the working environment, as well as functionality
+                    mapping so the robot can be a lot more useful in answering questions and
+                    helping patients in the waiting room. Also, we would anticipate implementing a
+                    gazing feature when talking to a human by utilizing you-only-look-once (YOLO)
+                    object detection to recognize only humans, and the robot will turn itself
+                    either left or right depending on where the user face is via camera.
+                </p>
+                <p>
+                    There are numerous potential extensions if someone else were to carry on the project, we will highly
+                    recommend implementing the two features mentioned above, as well as fine tuning
+                    the robot so then it would answer the patient's request robustly or knowing the
+                    right moment to ask for staff's help. Also, adding a simultaneous localization
+                    and mapping (SLAM) navigation system onto the robot to allow it to autonomously
+                    roaming around or guiding patients to the area or delivering items within the
+                    floor will be the next breakthrough for Rottsky.
+                </p>
+            </article>
+        </div>
+    </section>
+
+    <hr>
+
+    <section class="wrapper">
+        <div class="two-row-layout">
+            <article>
+                <h2>6 References</h2>
+                <ol>
+                    <li>
+                        Weisswange, T. H., Javed, H., Dietrich, M., Jung, M. F., & Jamali, N. (2025, December 12). Social mediation through robots --
+                        A scoping review on improving group interactions through directed robot action
+                        using an extended group process model. arXiv.org.
+                        <a href="https://arxiv.org/abs/2409.06557">https://arxiv.org/abs/2409.06557</a>
+                    </li>
+                    <li>
+                        Ling, Katrina & Langlois, Danielle & Preusse, Harrison & Fraune, Marlena & Tsui, Kate. (2022, March). Using
+                        Robots to Facilitate and Improve Social Interaction Between Humans: An
+                        Exploratory Qualitative Study with Adults 50+ in the US and Japan. | IEEE
+                        conference publication | IEEE xplore. IEEEXplore.
+                        <a href="https://ieeexplore.ieee.org/document/9889559/">https://ieeexplore.ieee.org/document/9889559/</a>
+                    </li>
+                    <li>
+                        Dong, Y., & Zhou, X. (2023, August 13). Advancements in AI-driven multilingual comprehension for social robot
+                        interactions: An extensive review. AIMs Press.
+                        <a href="https://www.aimspress.com/article/doi/10.3934/era.2023334">https://www.aimspress.com/article/doi/10.3934/era.2023334</a>
+                    </li>
+                    <li>
+                        Hara, K., & Iqbal, S. T. (2025, April 18). Effect of Machine Translation in Interlingual Conversation: Lessons from a
+                        Formative Study. ACM Digital Library.
+                        <a href="https://dl.acm.org/">https://dl.acm.org/</a>
+                    </li>
+                    <li>
+                        Tuttösí, P. (2025, July 30). I know you're listening: Adaptive voice for HRI. arXiv.org.
+                        <a href="https://arxiv.org/abs/2506.15107">https://arxiv.org/abs/2506.15107</a>
+                    </li>
+                    <li>
+                        Koverola, M., Kunnari, A., Sundvall, J., & Laakasuo, M. (2022). General attitudes towards robots scale (GAToRS):
+                        A new instrument for social surveys. International Journal of Social Robotics,
+                        14(7), 1559-1581.
+                        <a href="https://doi.org/10.1007/s12369-022-00880-3">https://doi.org/10.1007/s12369-022-00880-3</a>
+                    </li>
+                </ol>
+            </article>
+        </div>
+    </section>
+
+</div>
+
+<style>
+    .report-page {
+        --report-max-width: 800px;
+    }
+
+    .report-page h1 {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .report-page .wrapper {
+        align-items: stretch;
+        max-width: var(--report-max-width);
+        margin-inline: auto;
+        padding-inline: 1rem;
+    }
+
+    .report-page .about-me {
+        max-inline-size: var(--report-max-width);
+    }
+
+    .report-page .about-me .two-row-layout p {
+        text-align: left;
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    .report-page .two-row-layout {
+        align-items: stretch;
+        width: 100%;
+        max-width: var(--report-max-width);
+        gap: 0.25rem;
+    }
+
+    .report-page .two-row-layout article,
+    .report-page .two-row-layout > p,
+    .report-page .two-row-layout > h3,
+    .report-page .two-row-layout > h4,
+    .report-page .two-row-layout > h5 {
+        width: 100%;
+        text-align: left;
+    }
+
+    .report-page .two-row-layout article p,
+    .report-page .two-row-layout article li,
+    .report-page .two-row-layout > p,
+    .report-page .two-row-layout > ul {
+        text-align: left;
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    .report-page .two-row-layout h2,
+    .report-page .two-row-layout h3,
+    .report-page .two-row-layout h4,
+    .report-page .two-row-layout h5 {
+        text-align: left;
+        width: 100%;
+        margin-top: 1.25rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .report-page .two-row-layout h2 {
+        margin-top: 0;
+    }
+
+    .report-page .two-row-layout figure {
+        margin: 1.25rem 0 0.5rem;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .report-page .two-row-layout figure img {
+        max-width: 100%;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+        aspect-ratio: unset;
+    }
+
+    .report-page .two-row-layout figcaption {
+        margin-top: 0.5rem;
+        font-style: italic;
+        text-align: center;
+        font-size: 0.9rem;
+        line-height: 1.4;
+        max-width: 90%;
+    }
+
+    .report-page .face-comparison {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        width: 100%;
+        margin: 1rem 0 0.5rem;
+    }
+
+    .report-page .face-comparison figure {
+        margin: 0;
+    }
+
+    .report-page .face-comparison figcaption {
+        text-align: center;
+        font-style: normal;
+        margin-bottom: 0.5rem;
+    }
+
+    .report-page .table-caption {
+        text-align: center;
+        margin: 0.5rem 0 1rem;
+        font-size: 0.9rem;
+    }
+
+    .report-page table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1rem 0 0.5rem;
+        text-align: left;
+    }
+
+    .report-page table th,
+    .report-page table td {
+        border: 1px solid currentColor;
+        padding: 0.75rem;
+        vertical-align: top;
+    }
+
+    .report-page table th {
+        background-color: rgba(128, 128, 128, 0.15);
+    }
+
+    .report-page table ul {
+        margin: 0;
+        padding-left: 1.25rem;
+        text-align: left;
+    }
+
+    .report-page table li {
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+
+    .report-page ol {
+        text-align: left;
+        padding-left: 1.5rem;
+    }
+
+    .report-page ol li {
+        text-align: left;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-bottom: 0.75rem;
+    }
+
+    .report-page hr {
+        max-width: var(--report-max-width);
+        margin: 2rem auto;
+    }
+
+    @media screen and (max-width: 600px) {
+        .report-page .face-comparison {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+    <CustomEl />
+</Layout>
