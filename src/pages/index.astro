@@ -2,6 +2,7 @@
 // src/pages/index.astro
 import Layout from '../layouts/Layout.astro';
 import CustomEl from '../components/CustomEl.astro';
+import { withBase } from '../utils/withBase';
 ---
 
 <Layout title="CSE 134B - VyDang">
@@ -14,8 +15,8 @@ import CustomEl from '../components/CustomEl.astro';
 
                     <figure>
                         <picture> 
-                            <source srcset ="/resources/images/Kiet_Pink_600.jpg 600w, /resources/images/Kiet_Lake_1024.jpg 1024w" media="(min-width: 1025px)">
-                            <img    height="800" width="600" alt="Pink Kiet" src="/resources/images/Kiet_Pink_600.jpg">
+                            <source srcset={`${withBase('/resources/images/Kiet_Pink_600.jpg')} 600w, ${withBase('/resources/images/Kiet_Lake_1024.jpg')} 1024w`} media="(min-width: 1025px)">
+                            <img    height="800" width="600" alt="Pink Kiet" src={withBase('/resources/images/Kiet_Pink_600.jpg')}>
                         </picture>
                         <figcaption>Kiet at Jiu Zhai Gou</figcaption>
                     </figure>

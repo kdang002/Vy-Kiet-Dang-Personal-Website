@@ -2,6 +2,7 @@
 // src/layouts/Layout.astro
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { withBase } from '../utils/withBase';
 
 interface Props {
   title: string;
@@ -18,8 +19,8 @@ const { title } = Astro.props;
   
   <title>{title}</title>
   
-  <link rel="stylesheet" href="/css/main.css" media="screen">
-  <link rel="icon" type="image/x-icon" href="/resources/images/vkd.ico">
+  <link rel="stylesheet" href={withBase('/css/main.css')} media="screen">
+  <link rel="icon" type="image/x-icon" href={withBase('/resources/images/vkd.ico')}>
   
   <!-- Importing Custom Porsche fonts directly from porsche.com -->
   <link 
@@ -49,7 +50,7 @@ const { title } = Astro.props;
   <Footer />
   
   <!-- Dark mode script, applicable to all pages -->
-  <script is:inline src="/javascript/darkmode.js"></script>
+  <script is:inline src={withBase('/javascript/darkmode.js')}></script>
 
   <!-- JS Disable fail safe -->
   <noscript>

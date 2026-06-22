@@ -1,11 +1,13 @@
 ---
 // src/components/Footer.astro
+import { withBase } from '../utils/withBase';
+
 const currentYear = new Date().getFullYear();
 ---
 
 <footer>
     <div>
               <p>&copy; <span id="year"></span> Vy Kiet Dang. All rights reserved.</p>
-              <a href="/contact">Contact @Kiet</a>
+              <a href={withBase('/contact')}>Contact @Kiet</a>
     </div>
 </footer>

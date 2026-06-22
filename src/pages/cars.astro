@@ -1,12 +1,13 @@
 ---
-// src/pages/index.astro
+// src/pages/cars.astro
 import Layout from '../layouts/Layout.astro';
 import CustomEl from '../components/CustomEl.astro';
+import { withBase } from '../utils/withBase';
 ---
 
 <Layout title="Cars">
             <h1>Cars Collection 🏎️</h1>
-            <h2><a href="/cars-garage">⚙️ Go to Garage Manager ⚙️</a></h2>
+            <h2><a href={withBase('/cars-garage')}>⚙️ Go to Garage Manager ⚙️</a></h2>
 
             <!-- User's selection to either generate by localStorage or via cloud-->
             <section class="data-controls">
@@ -19,8 +20,8 @@ import CustomEl from '../components/CustomEl.astro';
             </section>
             
             
-            <script is:inline src="/javascript/project-card.js"></script>
-            <script is:inline src="/javascript/card-loader.js"></script>
+            <script is:inline src={withBase('/javascript/project-card.js')}></script>
+            <script is:inline src={withBase('/javascript/card-loader.js')}></script>
 
   <CustomEl />
 </Layout>

@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import CustomEl from '../components/CustomEl.astro';
+import { withBase } from '../utils/withBase';
 ---
 
 <Layout title="Rottsky Stone">
@@ -11,7 +12,7 @@ import CustomEl from '../components/CustomEl.astro';
 
     <section class="about-me" id="rottsky-stone">
         <div class="two-row-layout">
-            <img src="/resources/images/rottsky-stone.jpg" width="600" alt="Rottsky Stone Mini Pupper translator robot" />
+            <img src={withBase('/resources/images/rottsky-stone.jpg')} width="600" alt="Rottsky Stone Mini Pupper translator robot" />
             <p>
                 Rottsky Stone is a translator robot assistance meant to be deployed in settings
                 like hospital waiting rooms to bridge communication gaps caused by language
@@ -127,12 +128,12 @@ import CustomEl from '../components/CustomEl.astro';
             </article>
 
             <figure>
-                <img src="/resources/images/rottsky-stone/figure-01.png" alt="Diagram of how users and Rottsky react to various stimuli" />
+                <img src={withBase('/resources/images/rottsky-stone/figure-01.png')} alt="Diagram of how users and Rottsky react to various stimuli" />
                 <figcaption><em>Figure 1: A simple diagram of how users and Rottsky react to various stimuli</em></figcaption>
             </figure>
 
             <figure>
-                <img src="/resources/images/rottsky-stone/figure-02.png" alt="The main components of Rottsky and how they work together at a high level" />
+                <img src={withBase('/resources/images/rottsky-stone/figure-02.png')} alt="The main components of Rottsky and how they work together at a high level" />
                 <figcaption><em>Figure 2: The main components of Rottsky and how they work together at a high level</em></figcaption>
             </figure>
 
@@ -147,7 +148,7 @@ import CustomEl from '../components/CustomEl.astro';
             </p>
 
             <figure>
-                <img src="/resources/images/rottsky-stone/figure-03.png" alt="State machine showing how the interaction between the three main communication components interact with each other" />
+                <img src={withBase('/resources/images/rottsky-stone/figure-03.png')} alt="State machine showing how the interaction between the three main communication components interact with each other" />
                 <figcaption><em>Figure 3: State machine showing how the interaction between the three main communication components interact with each other.</em></figcaption>
             </figure>
 
@@ -161,7 +162,7 @@ import CustomEl from '../components/CustomEl.astro';
             </p>
 
             <figure>
-                <img src="/resources/images/rottsky-stone/figure-04.png" alt="State machine showing how the robot's movement state is initiated" />
+                <img src={withBase('/resources/images/rottsky-stone/figure-04.png')} alt="State machine showing how the robot's movement state is initiated" />
                 <figcaption><em>Figure 4: State machine showing how the robot's movement state is initiated.</em></figcaption>
             </figure>
 
@@ -172,7 +173,7 @@ import CustomEl from '../components/CustomEl.astro';
             </p>
 
             <figure>
-                <img src="/resources/images/rottsky-stone/figure-05.jpg" alt="The speech/text/translation pipeline" />
+                <img src={withBase('/resources/images/rottsky-stone/figure-05.jpg')} alt="The speech/text/translation pipeline" />
                 <figcaption><em>Figure 5: The speech/text/translation pipeline.</em></figcaption>
             </figure>
 
@@ -185,7 +186,7 @@ import CustomEl from '../components/CustomEl.astro';
             </p>
 
             <figure>
-                <img src="/resources/images/rottsky-stone/figure-06.png" alt="The speech/text/translation nodes" />
+                <img src={withBase('/resources/images/rottsky-stone/figure-06.png')} alt="The speech/text/translation nodes" />
                 <figcaption><em>Figure 6: The speech/text/translation nodes</em></figcaption>
             </figure>
 
@@ -208,7 +209,7 @@ import CustomEl from '../components/CustomEl.astro';
             </p>
 
             <figure>
-                <img src="/resources/images/rottsky-stone/figure-07.png" alt="The movement pipeline and nodes" />
+                <img src={withBase('/resources/images/rottsky-stone/figure-07.png')} alt="The movement pipeline and nodes" />
                 <figcaption><em>Figure 7: The movement pipeline and nodes</em></figcaption>
             </figure>
 
@@ -226,7 +227,7 @@ import CustomEl from '../components/CustomEl.astro';
             </p>
 
             <figure>
-                <img src="/resources/images/rottsky-stone/figure-08.png" alt="Rottsky's IDLE state is smiling" />
+                <img src={withBase('/resources/images/rottsky-stone/figure-08.png')} alt="Rottsky's IDLE state is smiling" />
                 <figcaption>
                     <em>
                         Figure 8: Rottsky's IDLE state is smiling. Image: Character BMO from Adventure Time. Credits to Cherry
@@ -246,11 +247,11 @@ import CustomEl from '../components/CustomEl.astro';
             <div class="face-comparison">
                 <figure>
                     <figcaption><strong>Rottsky moving forward or speaking</strong></figcaption>
-                    <img src="/resources/images/rottsky-stone/figure-09.png" alt="Rottsky moving forward or speaking face" />
+                    <img src={withBase('/resources/images/rottsky-stone/figure-09.png')} alt="Rottsky moving forward or speaking face" />
                 </figure>
                 <figure>
                     <figcaption><strong>Rottsky listening to user input</strong></figcaption>
-                    <img src="/resources/images/rottsky-stone/figure-10.png" alt="Rottsky listening to user input face" />
+                    <img src={withBase('/resources/images/rottsky-stone/figure-10.png')} alt="Rottsky listening to user input face" />
                 </figure>
             </div>
             <p class="table-caption"><em>Table 1: These are the different faces Rottsky will make during the interaction.</em></p>
@@ -285,7 +286,7 @@ import CustomEl from '../components/CustomEl.astro';
             </p>
 
             <figure>
-                <img src="/resources/images/rottsky-stone/figure-11.png" alt="Diagram of how endpoints are used and how information flows between client and the web server running on the robot" />
+                <img src={withBase('/resources/images/rottsky-stone/figure-11.png')} alt="Diagram of how endpoints are used and how information flows between client and the web server running on the robot" />
                 <figcaption><em>Figure 9: the diagram of how endpoints are used and how information flows between client and the web server running on the robot.</em></figcaption>
             </figure>
 
@@ -460,7 +461,7 @@ import CustomEl from '../components/CustomEl.astro';
             </article>
 
             <figure>
-                <img src="/resources/images/rottsky-stone/figure-12.png" alt="Forms response chart for trust in the robot's functionality. Number of responses: 4 responses." />
+                <img src={withBase('/resources/images/rottsky-stone/figure-12.png')} alt="Forms response chart for trust in the robot's functionality. Number of responses: 4 responses." />
                 <figcaption><em>Figure 10: The share of people who trusted Rottsky's functionality with the majority (75%) agreeing on trusting the robot.</em></figcaption>
             </figure>
 
@@ -483,12 +484,12 @@ import CustomEl from '../components/CustomEl.astro';
             </p>
 
             <figure>
-                <img src="/resources/images/rottsky-stone/figure-13.png" alt="Forms response chart for assigning routine tasks to robots. Number of responses: 4 responses." />
+                <img src={withBase('/resources/images/rottsky-stone/figure-13.png')} alt="Forms response chart for assigning routine tasks to robots. Number of responses: 4 responses." />
                 <figcaption><em>Figure 11: The share of people who believe Rottsky can allow humans to do more meaningful tasks. Of all of our participants, all of them agree.</em></figcaption>
             </figure>
 
             <figure>
-                <img src="/resources/images/rottsky-stone/figure-14.png" alt="Forms response chart for whether robot functionality may take away jobs. Number of responses: 4 responses." />
+                <img src={withBase('/resources/images/rottsky-stone/figure-14.png')} alt="Forms response chart for whether robot functionality may take away jobs. Number of responses: 4 responses." />
                 <figcaption><em>Figure 12: The share of people who feel Rottsky may or may not take away certain jobs with an even split of those who agree and disagree.</em></figcaption>
             </figure>
         </div>

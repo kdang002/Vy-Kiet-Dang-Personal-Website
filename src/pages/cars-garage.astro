@@ -1,7 +1,8 @@
 ---
-// src/pages/index.astro
+// src/pages/cars-garage.astro
 import Layout from '../layouts/Layout.astro';
 import CustomEl from '../components/CustomEl.astro';
+import { withBase } from '../utils/withBase';
 ---
 
 <Layout title="CSE 134B - VyDang">
@@ -67,11 +68,11 @@ import CustomEl from '../components/CustomEl.astro';
     </section>
 
     <!-- Back to Gallery Link -->
-    <a href="/cars.html" >⬅ Back to Gallery</a>
+    <a href={withBase('/cars')}>⬅ Back to Gallery</a>
 
 
 
-<script is:inline src="/javascript/crud-manager.js"></script>
+<script is:inline src={withBase('/javascript/crud-manager.js')}></script>
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
