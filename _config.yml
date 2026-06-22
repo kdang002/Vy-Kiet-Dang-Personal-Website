@@ -1,0 +1,16 @@
+# This repository is an Astro site, not a Jekyll site.
+# Build and deploy via .github/workflows/deploy.yml (GitHub Actions).
+#
+# If you see Jekyll errors, switch Pages source to GitHub Actions:
+# Settings → Pages → Build and deployment → Source → GitHub Actions
+
+exclude:
+  - src
+  - node_modules
+  - package.json
+  - package-lock.json
+  - astro.config.mjs
+  - tsconfig.json
+  - dist
+  - .astro
+  - .github
